@@ -11,3 +11,6 @@ The CryptoSystem used in this level is Substitution Cipher
 ## Assignment 2
 The Cryptosystem used in this level is Vigenere Cipher
 
+## Assignment 3
+The cryptosystem used in this level is Monoalphabetic Substitution Cipher along with Permutation(Transposition) Cipher with the block size of length 5.
+
