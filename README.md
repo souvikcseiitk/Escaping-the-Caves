@@ -1,7 +1,7 @@
 # Escaping-the-Caves
 CS641 Modern Cryptology Assignments, IIT Kanpur
 
-### * Group Name: SecureSavants
+### * Group Name: SecureSavants *
 ### Group Members:
 Vikrant Chauhan, Souvik Mukherjee, Vishal Kumar
 
