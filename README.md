@@ -1,5 +1,5 @@
 # Escaping-the-Caves
-CS641 Modern Cryptology Assignments, IIT Kanpur
+CS641 Modern Cryptology Assignments, IIT Kanpur, Spring 2024
 
 ### * Group Name: SecureSavants *
 ### Group Members:
