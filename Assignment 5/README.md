@@ -120,7 +120,9 @@ So using turtdwnnezas final command , we cleared the level.
 
 </pre>
 
-#Laymen's Language
+---
+
+# Laymen's Language
 
 ## **Encryption (Encoding the Plaintext)**
 
