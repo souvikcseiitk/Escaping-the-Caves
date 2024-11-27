@@ -120,4 +120,82 @@ So using turtdwnnezas final command , we cleared the level.
 
 </pre>
 
+#Laymen's Language
+
+## **Encryption (Encoding the Plaintext)**
+
+The goal is to convert **plaintext** (human-readable text) into **ciphertext** (encoded form), which appears random but can be decoded with the proper rules.
+
+### 1. **Pair the Characters**
+   - Take the plaintext (e.g., `"lkmpifififififff"`) and split it into pairs of two characters each:
+     ```plaintext
+     lk | mp | if | if | if | if | ff
+     ```
+
+### 2. **Map Each Pair Using F₁₂₈**
+   - Use a mapping system (based on the finite field F₁₂₈) to convert each pair into a number between 0 and 127:
+     - Each pair is treated as a "row-column" combination in a grid of characters from `'f'` to `'u'`.
+     - For example:
+       - `'l'` is the 6th character after `'f'`, and `'k'` is the 5th character after `'f'`.
+       - Map `'lk'` as: `16 × 6 + 5 = 101`.
+
+### 3. **Convert Back to Characters**
+   - Convert the number (e.g., `101`) back to another pair of encoded characters (`mj`, `mk`, etc.) using the same row-column mapping:
+     - For `101`: `row = 6 (l)`, `column = 5 (k)` → pair = `mj`.
+
+### 4. **Repeat for All Pairs**
+   - Perform this for all pairs, creating the encoded ciphertext:
+     ```plaintext
+     mj | mk | mh | mj ...
+     ```
+
+### 5. **Add Dependencies**
+   - Each layer of encryption introduces dependencies where the ciphertext blocks depend on all previous plaintext blocks. This makes the ciphertext harder to decode without the correct process.
+
+---
+
+## **Decryption (Decoding the Ciphertext)**
+
+The goal is to reverse the encryption process to convert the ciphertext back to plaintext.
+
+### 1. **Break the Ciphertext into Pairs**
+   - Take the encoded ciphertext (`"mjmkmhmj..."`) and split it into pairs:
+     ```ciphertext
+     mj | mk | mh | mj ...
+     ```
+
+### 2. **Map Each Pair Back Using F₁₂₈**
+   - Reverse the mapping by treating each pair (`mj`, `mk`, etc.) as a "row-column" combination:
+     - For `mj`:
+       - `'m'` is the 7th character after `'f'` → `row = 7`.
+       - `'j'` is the 4th character after `'f'` → `column = 4`.
+       - Compute the value: `16 × 7 + 4 = 116`.
+
+### 3. **Convert the Value Back to Characters**
+   - The number (`116`) corresponds to an ASCII value (characters):
+     - ASCII `116` → `'t'`.
+   - Map the decoded characters (`mj → t`).
+
+### 4. **Repeat for All Pairs**
+   - Continue this for all pairs in the ciphertext:
+     ```plaintext
+     mj | mk | mh | mj ...
+     ```
+     Decoded plaintext: `"lkmpifififififff"`.
+
+### 5. **Resolve Layered Dependencies**
+   - Since ciphertext blocks depend on previous plaintext blocks, decoding must happen sequentially:
+     - Decode the first block → use it to help decode the second block → continue.
+
+---
+
+### **Key Takeaways**
+- **Encryption**:
+  - Text is converted into pairs, mapped into numbers (using F₁₂₈), and re-encoded as new pairs.
+  - Dependencies between blocks make it more secure.
+  
+- **Decryption**:
+  - Reverse the mapping to recover numbers, then convert them back to characters.
+  - The sequential dependency requires decoding each block in order.
+
 
